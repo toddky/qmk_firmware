@@ -3,6 +3,9 @@
 #export PATH="$PATH:$qmk_bin"
 which qmk || exit $?
 
+# brew install avr-gcc
+which avr-gcc || exit $?
+
 keymap='toddyamakawa'
 #keymap='default'
 
