@@ -6,10 +6,10 @@ which qmk || exit $?
 # brew install avr-gcc
 which avr-gcc || exit $?
 
-#keymap='toddyamakawa'
-keymap='default'
+keymap='toddyamakawa'
+#keymap='default'
 
-print-run qmk compile -kb boardsource/microdox/v2 -km "$keymap" || exit $?
+qmk compile -kb boardsource/microdox -km "$keymap" || exit $?
 
 top="$(git top 2>/dev/null)"
 build="$top/.build"

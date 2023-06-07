@@ -18,6 +18,7 @@
 #include QMK_KEYBOARD_H
 #include "animation_frames.h"
 
+
 enum layer_names {
   _BASE,
   _VIA1,
