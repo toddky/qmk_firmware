@@ -12,24 +12,28 @@ enum layers {
     _BLANK,
 };
 
-#define K_F_SPC MT(MOD_LSFT, KC_ENT)
-#define K_S_ENT LT(_FUNCTION, KC_SPC)
+#define K_F_SPC  MT(MOD_LSFT, KC_SPC)
+#define K_C_TAB  MT(MOD_LCTL, KC_TAB)
+#define K_A_TAB  MT(MOD_LALT, KC_TAB)
+#define K_G_TAB  MT(MOD_LGUI, KC_TAB)
+#define K_S_ENT  LT(_FUNCTION, KC_ENT)
+
 #define LAY_CTL  MO(_CONTROL)
 #define LAY_FUN  MO(_FUNCTION)
 #define LAY_RGB  MO(_RGB)
 
-#define THUM_L1 MO(_NAVIGATE)
-#define THUM_L2 MO(_NUMBER)
-#define THUM_L3 LAY_CTL
-#define THUM_R1 MT(MOD_LSFT, KC_BSPC)
-#define THUM_R2 KC_SPC
-#define THUM_R3 LAY_FUN
+#define THUM_L1  MO(_NAVIGATE)
+#define THUM_L2  MO(_NUMBER)
+#define THUM_L3  LAY_CTL
+#define THUM_R1  MT(MOD_LSFT, KC_BSPC)
+#define THUM_R2  KC_SPC
+#define THUM_R3  LAY_FUN
 
-#define CTRL_C LCTL(KC_C)
-#define CTRL_F LCTL(KC_F)
-#define CTRL_V LCTL(KC_V)
-#define CTRL_X LCTL(KC_X)
-#define CTRL_Z LCTL(KC_Z)
+#define CTRL_C   LCTL(KC_C)
+#define CTRL_F   LCTL(KC_F)
+#define CTRL_V   LCTL(KC_V)
+#define CTRL_X   LCTL(KC_X)
+#define CTRL_Z   LCTL(KC_Z)
 
 #define QWERTY   DF(_QWERTY)
 #define COLEMAK  DF(_COLEMAK_DH)
@@ -101,7 +105,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_NAVIGATE] = LAYOUT_split_3x5_3(
     KC_ESC ,KC_DEL ,KC_PGUP,KC_PGDN,KC_HOME,   _______,_______,KC_INS ,_______,_______,
     //KC_ENT ,KC_LGUI,KC_LALT,KC_LCTL,KC_BSPC,   KC_LEFT,KC_DOWN,KC_UP  ,KC_RGHT,KC_TAB ,
-    K_S_ENT,KC_LGUI,KC_LALT,KC_LCTL,KC_BSPC,   KC_LEFT,KC_DOWN,KC_UP  ,KC_RGHT,KC_TAB ,
+    KC_ENT ,K_G_TAB,K_A_TAB,K_C_TAB,KC_BSPC,   KC_LEFT,KC_DOWN,KC_UP  ,KC_RGHT,KC_TAB ,
+    //REVISIT
+    //K_S_ENT,KC_LGUI,KC_LALT,KC_LCTL,KC_BSPC,   KC_LEFT,KC_DOWN,KC_UP  ,KC_RGHT,KC_TAB ,
     LAY_FUN,CTRL_X ,CTRL_C ,CTRL_V ,KC_END ,   KC_HOME,KC_PGDN,KC_PGUP,KC_END ,CTRL_F ,
                     _______,_______,_______,   _______,K_F_SPC,_______
     ),
@@ -166,15 +172,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // │       │       │       │       │       │  │       │       │       │       │       │
 // │  F12  │   F6  │   F5  │   F4  │       │  │       │       │       │       │       │
 // └───────┴───────┼───────┼───────┼───────┤  ├───────┼───────┼───────┼───────┴───────┘
-//                 │       │       │       │  │       │       │       │
-//                 │       │       │       │  │       │       │       │
+//                 │       │       │       │  │       │       │  ┌─┐  │
+//                 │       │       │       │  │       │       │  └─┘  │
 //                 └───────┴───────┴───────┘  └───────┴───────┴───────┘
     [_FUNCTION] = LAYOUT_split_3x5_3(
     KC_F11 ,KC_F9  ,KC_F8  ,KC_F7  ,_______,  _______,_______,KC_SCRL,KC_CAPS,KC_NUM ,
     KC_F10 ,KC_F3  ,KC_F2  ,KC_F1  ,KC_PSCR,  _______,KC_LCTL,KC_LALT,KC_LGUI,KC_LSFT,
     KC_F12 ,KC_F6  ,KC_F5  ,KC_F4  ,_______,  _______,_______,_______,_______,_______,
                     _______,LAY_RGB,LAY_CTL,  _______,_______,_______
-                    //_______,_______,LAY_CTL,  _______,_______,_______
     ),
 
 // ====================================================================================
