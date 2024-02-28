@@ -13,7 +13,7 @@ print-run qmk compile -kb boardsource/microdox/v2 -km "$keymap" || exit $?
 
 top="$(git top 2>/dev/null)"
 build="$top/.build"
-hexfile="$build/boardsource_microdox_$keymap.hex"
+hexfile="$build/boardsource_microdox_v2_$keymap.hex"
 dest="$HOME/.config/links/downloads"
 [[ -d "$HOME/Downloads" ]] && dest="$HOME/Downloads"
 
