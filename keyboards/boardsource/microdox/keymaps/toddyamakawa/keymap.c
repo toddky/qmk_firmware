@@ -38,6 +38,11 @@ enum layers {
 #define QWERTY   DF(_QWERTY)
 #define COLEMAK  DF(_COLEMAK_DH)
 
+// MacOS Keyboard Shortcuts
+#define WS_NEXT  LCTL(KC_RIGHT)
+#define WS_SHOW  LCTL(KC_UP)
+#define WS_PREV  LCTL(KC_LEFT)
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 // ====================================================================================
@@ -154,8 +159,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //                 └───────┴───────┴───────┘  └───────┴───────┴───────┘
     [_CONTROL] = LAYOUT_split_3x5_3(
     _______,_______,KC_VOLU,KC_VOLD,_______,   _______,_______,_______,_______,_______,
-    _______,KC_MPRV,KC_MPLY,KC_MNXT,_______,   _______,QWERTY ,COLEMAK,_______,_______,
-    _______,_______,_______,_______,_______,   _______,_______,_______,_______,_______,
+    _______,WS_PREV,WS_SHOW,WS_NEXT,_______,   _______,QWERTY ,COLEMAK,_______,_______,
+    _______,KC_MPRV,KC_MPLY,KC_MNXT,_______,   _______,_______,_______,_______,_______,
                     _______,_______,_______,   _______,_______,_______
     ),
 
