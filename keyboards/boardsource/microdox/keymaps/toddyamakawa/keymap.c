@@ -20,10 +20,12 @@ enum layers {
 
 #define LAY_CTL  MO(_CONTROL)
 #define LAY_FUN  MO(_FUNCTION)
+#define LAY_NAV  MO(_NAVIGATE)
+#define LAY_NUM  MO(_NUMBER)
 #define LAY_RGB  MO(_RGB)
 
-#define THUM_L1  MO(_NAVIGATE)
-#define THUM_L2  MO(_NUMBER)
+#define THUM_L1  LAY_NAV
+#define THUM_L2  LAY_NUM
 #define THUM_L3  LAY_CTL
 #define THUM_R1  MT(MOD_LSFT, KC_BSPC)
 #define THUM_R2  KC_SPC
@@ -62,9 +64,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //                 │       │ NUMBER│  NAV  │  │ BKSPC │ SPACE │       │
 //                 └───────┴───────┴───────┘  └───────┴───────┴───────┘
     [_QWERTY] = LAYOUT_split_3x5_3(
-    KC_Q   ,KC_W   ,KC_E   ,KC_R   ,KC_T   ,   KC_Y   ,KC_U   ,KC_I   ,   KC_O,KC_P   ,
-    KC_A   ,KC_S   ,KC_D   ,KC_F   ,KC_G   ,   KC_H   ,KC_J   ,KC_K   ,   KC_L,KC_SCLN,
-    KC_Z   ,KC_X   ,KC_C   ,KC_V   ,KC_B   ,   KC_N   ,KC_M   ,KC_COMM, KC_DOT,KC_SLSH,
+    KC_Q   ,KC_W   ,KC_E   ,KC_R   ,KC_T   ,   KC_Y   ,KC_U   ,KC_I   ,KC_O   ,KC_P   ,
+    KC_A   ,KC_S   ,KC_D   ,KC_F   ,KC_G   ,   KC_H   ,KC_J   ,KC_K   ,KC_L   ,KC_SCLN,
+    KC_Z   ,KC_X   ,KC_C   ,KC_V   ,KC_B   ,   KC_N   ,KC_M   ,KC_COMM,KC_DOT ,KC_SLSH,
                     THUM_L3,THUM_L2,THUM_L1,   THUM_R1,THUM_R2,THUM_R3
     ),
 
@@ -102,34 +104,31 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // │ ENTER │  GUI  │  ALT  │  CTRL │ BKSPC │  │   ←   │   ↓   │   ↑   │   →   │  TAB  │
 // ├───────┼───────┼───────┼───────┼───────┤  ├───────┼───────┼───────┼───────┼───────┤
 // │       │       │       │       │       │  │       │       │       │       │       │
-// │       │       │       │       │  END  │  │  HOME │  PGDN │  PGUP │  END  │ CTRL-F│
+// │       │ CTRL-X│ CTRL-C│ CTRL-V│  END  │  │  HOME │  PGDN │  PGUP │  END  │ CTRL-F│
 // └───────┴───────┼───────┼───────┼───────┤  ├───────┼───────┼───────┼───────┴───────┘
 //                 │       │       │  ┌─┐  │  │       │       │       │
 //                 │       │       │  └─┘  │  │       │       │       │
 //                 └───────┴───────┴───────┘  └───────┴───────┴───────┘
     [_NAVIGATE] = LAYOUT_split_3x5_3(
     KC_ESC ,KC_DEL ,KC_PGUP,KC_PGDN,KC_HOME,   _______,_______,KC_INS ,_______,_______,
-    //KC_ENT ,KC_LGUI,KC_LALT,KC_LCTL,KC_BSPC,   KC_LEFT,KC_DOWN,KC_UP  ,KC_RGHT,KC_TAB ,
     KC_ENT ,K_G_TAB,K_A_TAB,K_C_TAB,KC_BSPC,   KC_LEFT,KC_DOWN,KC_UP  ,KC_RGHT,KC_TAB ,
-    //REVISIT
-    //K_S_ENT,KC_LGUI,KC_LALT,KC_LCTL,KC_BSPC,   KC_LEFT,KC_DOWN,KC_UP  ,KC_RGHT,KC_TAB ,
     LAY_FUN,CTRL_X ,CTRL_C ,CTRL_V ,KC_END ,   KC_HOME,KC_PGDN,KC_PGUP,KC_END ,CTRL_F ,
                     _______,_______,_______,   _______,K_F_SPC,_______
     ),
 
 // ====================================================================================
-// NUMBER
+// SYMBOLS AND NUMBERS
 // ====================================================================================
-// Left-handed number pad.
+// Symbols and left-handed number pad.
 // ┌───────┬───────┬───────┬───────┬───────┐  ┌───────┬───────┬───────┬───────┬───────┐
 // │       │   (   │   *   │   &   │       │  │       │       │       │       │       │
-// │   ~   │   9   │   8   │   7   │       │  │   "   │   (   │   )   │   \   │   |   │
+// │   ~   │   9   │   8   │   7   │       │  │   `   │   (   │   )   │   \   │   |   │
 // ├───────┼───────┼───────┼───────┼───────┤  ├───────┼───────┼───────┼───────┼───────┤
 // │   )   │   #   │   @   │   !   │       │  │       │       │       │       │       │
-// │   0   │   3   │   2   │   1   │   -   │  │   '   │   {   │   }   │   -   │   _   │
+// │   0   │   3   │   2   │   1   │   -   │  │   "   │   {   │   }   │   -   │   _   │
 // ├───────┼───────┼───────┼───────┼───────┤  ├───────┼───────┼───────┼───────┼───────┤
 // │       │   ^   │   %   │   $   │       │  │       │       │       │       │       │
-// │   `   │   6   │   5   │   4   │       │  │   `   │   [   │   ]   │   =   │   +   │
+// │   `   │   6   │   5   │   4   │       │  │   '   │   [   │   ]   │   =   │   +   │
 // └───────┼───────┼───────┼───────┼───────┤  ├───────┼───────┼───────┼───────┴───────┘
 //                 │       │  ┌─┐  │       │  │       │       │       │
 //                 │       │  └─┘  │       │  │       │       │       │
@@ -148,11 +147,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // │       │       │       │       │       │  │       │       │       │       │       │
 // │       │       │  VOL+ │  VOL- │       │  │       │       │       │       │       │
 // ├───────┼───────┼───────┼───────┼───────┤  ├───────┼───────┼───────┼───────┼───────┤
-// │       │       │       │       │       │  │       │       │       │       │       │
-// │       │  PREV │  PLAY │  NEXT │       │  │       │ QUERTY│COLEMAK│       │       │
+// │       │ WKSPC │ WKSPC │ WKSPC │       │  │       │       │       │       │       │
+// │       │  PREV │  SHOW │  NEXT │       │  │       │ QWERTY│COLEMAK│       │       │
 // ├───────┼───────┼───────┼───────┼───────┤  ├───────┼───────┼───────┼───────┼───────┤
-// │       │       │       │       │       │  │       │       │       │       │       │
-// │       │       │       │       │       │  │       │       │       │       │       │
+// │       │ MEDIA │ MEDIA │ MEDIA │       │  │       │       │       │       │       │
+// │       │  PREV │  PLAY │  NEXT │       │  │       │       │       │       │       │
 // └───────┴───────┼───────┼───────┼───────┤  ├───────┼───────┼───────┼───────┴───────┘
 //                 │  ┌─┐  │       │  ┌─┐  │  │       │       │       │
 //                 │  └─┘  │       │  └─┘  │  │       │       │       │
